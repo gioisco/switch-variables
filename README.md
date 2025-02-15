@@ -49,35 +49,15 @@ switch_java 11
 
 ## Installation
 
-You can install this script on your system and integrate it with your actual `.bashrc` file:
-
-1. Move the `switch_variables.sh` file to the user's home directory.
-2. Add the following functions from the custom `bashrc` to your own `.bashrc`:
+You can install this script by sourcing the custom `bashrc` in your actual `~/.bashrc`:
 
 ```bash
-switch_variable() {
-   if [[ -z "$1" || -z "$2" ]]; then
-       echo "Usage: $FUNCNAME <variable> <pattern_to_find>"
-       return 1
-   fi
-
-   SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-   BASHRC_FILE="${BASH_SOURCE[0]}"
-
-   source ${SCRIPT_DIR}/switch_variables.sh "${BASHRC_FILE}" "$1" "$2"
-}
-
-switch_java() {
-   if [ -z "$1" ]; then
-       echo "Usage: $FUNCNAME <java_version>"
-       return 1
-   fi
-
-   switch_variable "JAVA_HOME" "$1"
-}
+source <your_path>/switch-variables/bashrc
 ```
 
-3. Edit `SCRIPT_DIR` or `BASHRC_FILE` if you need to use a different script directory or another file to manage your environment variables.
+If you want to use a different file to manage your environment variables (e.g., your actual `~/.bashrc`), edit the `BASHRC_FILE` accordingly.
+
+
 
 ## Contributing
 
